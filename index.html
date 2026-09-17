@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="theme-color" content="#06151a">
+  <meta name="description" content="Trade With Navjot Barar — learning, market awareness and trading community.">
+  <title>Trade With Navjot Barar</title>
+
+  <style>
+    :root{
+      --bg:#031014;
+      --panel:#061b1d;
+      --panel2:#082326;
+      --line:#0d5b55;
+      --green:#12e7a7;
+      --cyan:#16d9ff;
+      --text:#f4fbfa;
+      --muted:#9bb1b0;
+      --telegram:#12d9ec;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:320px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(0,220,170,.12), transparent 34%),
+        linear-gradient(180deg,#02090c 0%,#031317 55%,#020a0d 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      overflow-x:hidden;
+      padding-top:58px;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.10;
+      background-image:
+        linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+      background-size:46px 46px;
+      mask-image:linear-gradient(to bottom,#000,transparent 72%);
+    }
+
+    a{color:inherit}
+    .wrap{width:min(100%,520px);margin:auto;padding:0 12px}
+
+    /* FIXED TELEGRAM BAR */
+    .fixed-bar{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:9999;
+      padding:8px 10px;
+      background:rgba(2,10,13,.94);
+      border-bottom:1px solid #0b4d4b;
+      backdrop-filter:blur(14px);
+    }
+    .fixed-inner{
+      width:min(100%,520px);
+      margin:auto;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .live-dot{
+      width:9px;height:9px;flex:0 0 9px;
+      border-radius:50%;
+      background:#19ee91;
+      box-shadow:0 0 12px #19ee91;
+      animation:blink 1.4s infinite;
+    }
+    @keyframes blink{
+      50%{opacity:.45;transform:scale(.8)}
+    }
+    .bar-label{
+      font-size:10px;
+      font-weight:800;
+      color:#c7d9d7;
+      white-space:nowrap;
+    }
+    .bar-join{
+      margin-left:auto;
+      text-decoration:none;
+      font-size:11px;
+      font-weight:950;
+      padding:9px 13px;
+      border-radius:22px;
+      color:#031114;
+      background:linear-gradient(90deg,#16e4ae,#13d7f0);
+      box-shadow:0 0 18px rgba(18,231,167,.24);
+      white-space:nowrap;
+    }
+
+    /* HERO */
+    .hero{padding:25px 0 8px}
+    .profile{
+      display:flex;
+      align-items:center;
+      gap:11px;
+    }
+    .avatar{
+      width:64px;height:64px;flex:0 0 64px;
+      padding:3px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#13e9b0,#10d9ff);
+      box-shadow:0 0 20px rgba(18,231,167,.20);
+    }
+    .avatar-inner{
+      width:100%;height:100%;
+      border-radius:50%;
+      overflow:hidden;
+      background:linear-gradient(135deg,#0b3438,#071518);
+      display:grid;
+      place-items:center;
+      color:#7ea4a2;
+      font-size:8px;
+      font-weight:800;
+      text-align:center;
+    }
+    .avatar-inner img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .name{
+      font-size:20px;
+      font-weight:950;
+      letter-spacing:-.4px;
+    }
+    .verified{
+      display:inline-grid;
+      place-items:center;
+      width:18px;height:18px;
+      border-radius:50%;
+      background:#12a9ed;
+      color:#fff;
+      font-size:11px;
+      margin-left:3px;
+    }
+    .role{margin-top:3px;color:#9db1b0;font-size:11px}
+
+    .hero-title{
+      margin:25px 0 0;
+      font-size:clamp(39px,12vw,54px);
+      line-height:.96;
+      letter-spacing:-2px;
+      font-weight:1000;
+    }
+    .gradient{
+      background:linear-gradient(90deg,#fff,#14dfbd,#19d9ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .intro{
+      margin:13px 0 0;
+      color:#b9c9c8;
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    /* COMMUNITY LIVE */
+    .community{
+      margin-top:18px;
+      border:1px solid #11655e;
+      border-radius:17px;
+      background:linear-gradient(145deg,#071e20,#051418);
+      overflow:hidden;
+    }
+    .community-head{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:13px 13px 10px;
+    }
+    .community-icon{
+      width:30px;height:30px;
+      border-radius:9px;
+      display:grid;
+      place-items:center;
+      background:#063b32;
+      border:1px solid #12e7a755;
+      font-size:15px;
+    }
+    .community-title{
+      font-size:13px;
+      font-weight:950;
+    }
+    .community-sub{
+      font-size:9px;
+      color:#809896;
+      margin-top:2px;
+    }
+    .active{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:5px;
+      font-size:8px;
+      color:#19e990;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .active i{
+      width:6px;height:6px;border-radius:50%;
+      background:#19e990;
+      box-shadow:0 0 9px #19e990;
+    }
+
+    .join-feed{
+      border-top:1px solid #103f3d;
+      padding:8px;
+      display:grid;
+      gap:5px;
+    }
+    .join-row{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 8px;
+      border:1px solid #0c3938;
+      border-radius:10px;
+      background:#061619;
+      font-size:10px;
+    }
+    .person{
+      width:22px;height:22px;flex:0 0 22px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#0a765f;
+      color:#fff;
+      font-size:8px;
+      font-weight:950;
+    }
+    .joined{font-weight:800}
+    .time{margin-left:auto;color:#6f8987;font-size:8px}
+
+    /* COMPACT ADVANCED FEATURES */
+    .section-label{
+      text-align:center;
+      margin:27px 0 12px;
+    }
+    .eyebrow{
+      color:#19dcb9;
+      font-size:8px;
+      letter-spacing:3px;
+      font-weight:950;
+    }
+    .section-label h2{
+      margin:5px 0 0;
+      font-size:23px;
+      letter-spacing:-.8px;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+    .feature{
+      min-height:105px;
+      padding:12px;
+      border-radius:15px;
+      border:1px solid #104541;
+      background:linear-gradient(145deg,#071d20,#051316);
+      position:relative;
+      overflow:hidden;
+    }
+    .feature:after{
+      content:"";
+      position:absolute;
+      width:70px;height:70px;
+      right:-35px;top:-35px;
+      border-radius:50%;
+      background:rgba(18,231,167,.08);
+    }
+    .feature-icon{
+      width:34px;height:34px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      margin-bottom:8px;
+      font-size:17px;
+      background:#063b34;
+      border:1px solid #14dcb355;
+    }
+    .feature:nth-child(2) .feature-icon{background:#073441;border-color:#16d9ff55}
+    .feature:nth-child(3) .feature-icon{background:#172f47;border-color:#4fa7ff55}
+    .feature:nth-child(4) .feature-icon{background:#26301a;border-color:#b7df4d55}
+    .feature h3{
+      margin:0 0 4px;
+      font-size:12px;
+      font-weight:950;
+    }
+    .feature p{
+      margin:0;
+      color:#819694;
+      font-size:9px;
+      line-height:1.4;
+    }
+
+    /* SIMPLE COMMUNITY FEED */
+    .feed{
+      margin-top:13px;
+      border:1px solid #103c3b;
+      border-radius:15px;
+      overflow:hidden;
+      background:#061518;
+    }
+    .feed-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px;
+      border-bottom:1px solid #0e3332;
+    }
+    .feed-head b{font-size:11px}
+    .feed-head span{font-size:8px;color:#18d9b3}
+    .feed-row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-bottom:1px solid #0c2929;
+    }
+    .feed-row:last-child{border-bottom:0}
+    .feed-icon{
+      width:28px;height:28px;
+      border-radius:8px;
+      display:grid;
+      place-items:center;
+      background:#0b292c;
+      font-size:13px;
+    }
+    .feed-name{font-size:10px;font-weight:850}
+    .feed-desc{font-size:8px;color:#6f8887;margin-top:2px}
+    .feed-time{margin-left:auto;color:#66807e;font-size:8px}
+
+    .note{
+      margin:18px 0 25px;
+      text-align:center;
+      color:#637a78;
+      font-size:8px;
+      line-height:1.5;
+    }
+
+    @media (max-width:360px){
+      .bar-label{display:none}
+      .name{font-size:18px}
+      .hero-title{font-size:38px}
+      .feature{min-height:108px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Fixed Telegram bar -->
+  <div class="fixed-bar">
+    <div class="fixed-inner">
+      <span class="live-dot"></span>
+      <span class="bar-label">COMMUNITY IS LIVE</span>
+      <a class="bar-join" href="https://t.me/yourchannel" target="_blank" rel="noopener">✈️ JOIN TELEGRAM</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="profile">
+        <div class="avatar">
+          <div class="avatar-inner">
+            <!-- Replace navjot-profile.jpg with the photo you provide -->
+            <img src="navjot-profile.jpg" alt="Trade With Navjot Barar"
+                 onerror="this.style.display='none';this.parentElement.textContent='NAVJOT PHOTO';">
+          </div>
+        </div>
+        <div>
+          <div class="name">Trade With Navjot Barar <span class="verified">✓</span></div>
+          <div class="role">Trading &amp; Learning Community</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        Learn Trading<br>
+        <span class="gradient">The Right Way</span>
+      </h1>
+
+      <p class="intro">
+        Learn • Understand • Grow — market awareness, chart reading,
+        educational sessions and community discussions.
+      </p>
+
+      <!-- Community is active + live joining updates -->
+      <section class="community">
+        <div class="community-head">
+          <div class="community-icon">👥</div>
+          <div>
+            <div class="community-title">Community is active</div>
+            <div class="community-sub">Live member activity on Telegram</div>
+          </div>
+          <div class="active"><i></i> LIVE</div>
+        </div>
+
+        <div class="join-feed" id="joinFeed">
+          <div class="join-row"><span class="person">S</span><span><span class="joined">Suresh</span> joined the community</span><span class="time">just now</span></div>
+          <div class="join-row"><span class="person">R</span><span><span class="joined">Ram</span> joined the community</span><span class="time">just now</span></div>
+          <div class="join-row"><span class="person">A</span><span><span class="joined">Amit</span> joined the community</span><span class="time">recently</span></div>
+        </div>
+      </section>
+    </section>
+
+    <div class="section-label">
+      <div class="eyebrow">WHAT YOU'LL GET</div>
+      <h2>Learn • Understand • Grow</h2>
+    </div>
+
+    <section class="features">
+      <article class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Market Updates</h3>
+        <p>Key market movements and educational insights in a compact format.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">🎓</div>
+        <h3>Learning Sessions</h3>
+        <p>Simple, structured sessions to understand trading concepts.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">📈</div>
+        <h3>Chart Reading</h3>
+        <p>Learn how to read charts, levels and common market patterns.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">🤝</div>
+        <h3>Community</h3>
+        <p>Connect with members and follow ongoing learning discussions.</p>
+      </article>
+    </section>
+
+    <section class="feed">
+      <div class="feed-head">
+        <b>🔴 Community Feed</b>
+        <span>LIVE ACTIVITY</span>
+      </div>
+      <div class="feed-row">
+        <div class="feed-icon">📊</div>
+        <div><div class="feed-name">Market Discussion</div><div class="feed-desc">Educational market topic</div></div>
+        <div class="feed-time">Today</div>
+      </div>
+      <div class="feed-row">
+        <div class="feed-icon">📈</div>
+        <div><div class="feed-name">Chart Learning</div><div class="feed-desc">Chart-reading concept</div></div>
+        <div class="feed-time">Today</div>
+      </div>
+      <div class="feed-row">
+        <div class="feed-icon">💬</div>
+        <div><div class="feed-name">Community Discussion</div><div class="feed-desc">Learning &amp; awareness</div></div>
+        <div class="feed-time">Recent</div>
+      </div>
+    </section>
+
+    <div class="note">
+      Educational content only. Trading and investing involve risk.<br>
+      This page is not affiliated with Facebook or Instagram.
+    </div>
+  </main>
+
+  <script>
+    // Small live-style UI rotation for the joining feed.
+    // This is a visual animation; it does not represent real Telegram membership data.
+    const names = ["Suresh","Ram","Amit","Vikas","Priya","Rohit","Neeraj","Karan"];
+    const feed = document.getElementById("joinFeed");
+
+    function addJoin(){
+      const name = names[Math.floor(Math.random() * names.length)];
+      const initial = name[0];
+      const row = document.createElement("div");
+      row.className = "join-row";
+      row.innerHTML =
+        '<span class="person">'+initial+'</span>' +
+        '<span><span class="joined">'+name+'</span> joined the community</span>' +
+        '<span class="time">just now</span>';
+      feed.prepend(row);
+      while(feed.children.length > 3) feed.removeChild(feed.lastElementChild);
+    }
+
+    setInterval(addJoin, 5200);
+  </script>
+</body>
+</html>
